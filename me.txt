@@ -1,0 +1,4 @@
+第一类题型:
+给定一个数,可以有多个操作,例如加减乘除,求变成某一个目标数的最小操作次数.
+https://leetcode.cn/problems/integer-replacement/description/
+https://leetcode.cn/problems/minimum-reverse-operations/description/?envType=daily-question&envId=2025-03-20
