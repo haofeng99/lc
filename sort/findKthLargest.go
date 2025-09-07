@@ -1,44 +1,10 @@
-package heap
+package sort
 
 // https://leetcode.cn/problems/kth-largest-element-in-an-array/
 // 主要考察对堆排序和快速排序的理解
 // 215 数组中的第K个最大元素
-// 1.堆排序
+
 func findKthLargest(nums []int, k int) int {
-
-	var buildHeap func([]int, int, int)
-	buildHeap = func(arr []int, i, len int) {
-		p := i
-		l, r := 2*p+1, 2*p+2
-		if l < len && arr[l] > arr[p] {
-			p = l
-		}
-		if r < len && arr[r] > arr[p] {
-			p = r
-		}
-		if p != i {
-			arr[p], arr[i] = arr[i], arr[p]
-			buildHeap(arr, p, len)
-		}
-	}
-
-	length := len(nums)
-	// 2*i+1 2*i+2 (i-1)/2
-	// (lenght-1-1)/2 -> lenght/2 -1
-	for i := length/2 - 1; i >= 0; i-- {
-		buildHeap(nums, i, length)
-	}
-
-	for i := length - 1; i > length-1-k; i-- {
-		nums[0], nums[i] = nums[i], nums[0]
-		buildHeap(nums, 0, i)
-	}
-	return nums[length-k]
-}
-
-// 2. 快速排序
-// 快排为何先右后左
-func findKthLargest_(nums []int, k int) int {
 	var quickSort func([]int, int, int) int
 	quickSort = func(arr []int, left, right int) int {
 		if left >= right {

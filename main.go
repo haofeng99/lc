@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	basesort "lc/sort/base_sort"
 	"math"
 )
 
@@ -56,4 +57,6 @@ func main() {
 	s := "->aaa"
 	fmt.Println(s[0:2])
 	fmt.Println(s[2:])
+
+	basesort.ShowQuickSort()
 }

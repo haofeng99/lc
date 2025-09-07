@@ -1,5 +1,9 @@
 package sort
 
+// https://leetcode.cn/problems/merge-k-sorted-lists/description
+// 23. 合并 K 个升序链表
+// 方法1: 堆
+// 方法2: 归并排序
 func mergeKLists(lists []*ListNode) *ListNode {
 	if len(lists) == 0 {
 		return nil
