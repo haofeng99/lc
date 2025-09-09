@@ -2,7 +2,7 @@ package binarysearch
 
 // https://leetcode.cn/problems/median-of-two-sorted-arrays/
 // 4. 寻找两个正序数组的中位数
-// 思路: 找第k小的数据
+// 思路: 找第k小的数据 https://www.nowcoder.com/practice/41796daa4c7e4e5ab984b2c16c24a1de
 
 func findMedianSortedArrays(nums1 []int, nums2 []int) float64 {
 
