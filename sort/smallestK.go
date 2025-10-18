@@ -2,6 +2,7 @@ package sort
 
 import "fmt"
 
+// 面试题: 17.14. 最小K个数
 func smallestK(arr []int, k int) []int {
 	quickSort(arr, 0, len(arr)-1, k)
 	return arr[:k]

@@ -59,4 +59,14 @@ func main() {
 	fmt.Println(s[2:])
 
 	basesort.ShowQuickSort()
+
+	arr1 := make([]int, 5)
+	fmt.Println(arr1)
+	fmt.Println(arr1[0])
+
+	arr2 := make([]int, 0, 5)
+	arr2 = append(arr2, 1)
+	arr2 = []int{}
+	arr2 = append(arr2, 2)
+	fmt.Println(arr2)
 }

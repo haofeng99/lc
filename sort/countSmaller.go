@@ -2,6 +2,7 @@ package sort
 
 import "fmt"
 
+// 315 计算右侧小于当前元素的个数
 var ans []int
 var extNums []extNum
 
