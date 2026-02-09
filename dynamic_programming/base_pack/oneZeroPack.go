@@ -1,7 +1,10 @@
 package base_pack
 
+// https://leetcode.cn/discuss/post/566174/zan-jiu-ba-01bei-bao-wen-ti-jiang-ge-ton-sp8d/
+// 01背包和完全背包需要掌握
+
 // 01背包基本定义:
-// N件物品,容量为V的包, 放入第i件物品的耗费是C_i, 得到价值是W_i, 求解最大价值
+// N件物品,容量/载重为V的包, 放入第i件物品的耗费是V_i, 得到价值是W_i, 求解最大价值
 // 特征: 每个物品仅有一件, 可以选择放或者不放
 
 // 特征方程定义
@@ -9,8 +12,8 @@ package base_pack
 
 // 递推公式确定(考虑子问题)
 // dp[i-1][j] 第i个物品不放入包中
-// dp[i-1][j-W_i] + V_i 第i个物品放入包中
-// dp[i][j] = max(dp[i-1][j], dp[i-1][j-W_i] + V_i)
+// dp[i-1][j-V_i] + W_i 第i个物品放入包中
+// dp[i][j] = max(dp[i-1][j], dp[i-1][j-V_i] + W_i)
 
 // dp数组初始化
 // dp[i][0] 表示i+1个物品在容量为0的场景下放入的情况, 永远都是0
