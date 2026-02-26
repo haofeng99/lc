@@ -16,7 +16,6 @@ func maxSubArray(nums []int) int {
 	preSumArr := make([]int, len(nums)+1)
 	for i, v := range nums {
 		preSumArr[i+1] = preSumArr[i] + v
-
 	}
 
 	_, _, maxSubArrSum := maxDifference(preSumArr)
@@ -24,6 +23,7 @@ func maxSubArray(nums []int) int {
 	return maxSubArrSum
 }
 
+// 前缀和之后本质就是求数组中的最大差值
 // 121 买卖股票的最佳时机
 // 找到最大差值 arr[j] - arr[i] (j > i)
 func maxDifference(arr []int) (int, int, int) {

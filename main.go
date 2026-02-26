@@ -2,71 +2,48 @@ package main
 
 import (
 	"fmt"
-	basesort "lc/sort/base_sort"
-	"math"
 )
 
 func main() {
 
-	str := "[aaa]"
-	fmt.Println(str[1 : len(str)-1])
+	// 1. slice初始化
+	// 1.1 make初始化
+	arr_make := make([]int, 5, 10)
+	fmt.Println(arr_make) // [0 0 0 0 0] make初始化会将元素初始化为零值
 
-	// cache5 := map[int][][]int{}
-	// cache5[1][0] = append(cache5[1][0], 55)
-	// fmt.Println(cache5)
+	arr_make_0 := make([]int, 0, 10)
+	// fmt.Println(arr_make_0[0]) // panic: runtime error: index out of range [0] with length 0
+	arr_make_0 = append(arr_make_0, 1)
+	fmt.Println(arr_make_0) // [1]
 
-	// cache4 := [][]int{}
-	// cache4[0] = append(cache4[0], 5)
-	// fmt.Println(cache4)
+	// 1.2 new初始化(通常不建议使用)
+	// new函数用于创建指定类型的零值对象，并返回该对象的指针
+	arr_new := new([]int)
+	fmt.Println(arr_new) // &[] 这是Go的fmt包对*[]T类型的特殊打印格式
+	// arr_new = append(arr_new, 1) // first argument to append must be a slice; have arr_new (variable of type *[]int)
 
-	// cache := make(map[int][]int)
-	// cache[1] = append(cache[1], 2)
-	// cache[1] = append(cache[1], 3)
-	// fmt.Println(cache)
+	arr_new_5 := new([5]int)
+	fmt.Println(arr_new_5) //&[0 0 0 0 0]
 
-	// cache2 := []int{}
-	// cache2 = append(cache2, 4)
-	// fmt.Println(cache2)
+	// 1.3 直接声明
+	arr_literal := []int{}
+	fmt.Println(arr_literal) // []
+	// fmt.Println(arr_literal[0]) // panic: runtime error: index out of range [0] with length 0
 
-	// ans1 := [][]int{}
-	// ans1[0] = append(ans1[0], 5)
-	// fmt.Println(ans1)
+	// 1.4 字面量
+	var arr []int
+	fmt.Println(arr) // [] 字面量初始化会将元素初始化为零值
+	// fmt.Println(arr[0]) // panic: runtime error: index out of range [0] with length 0
 
-	// stack := make([]int, 5)
-	// fmt.Println(stack)
+	// 1.5 二维slice初始化
+	matrix := make([][]int, 3)
+	fmt.Println(matrix) // [[] [] []]
+	// matrix[0][0] = 1 // panic: runtime error: index out of range [0] with length 0
+	for i := range matrix {
+		matrix[i] = make([]int, 3)
+	}
+	matrix[0][0] = 1
+	fmt.Println(matrix) // [[1 0 0] [0 0 0] [0 0 0]]
 
-	// cache1 := map[int][]int{}
-	// cache1[0] = append(cache1[0], 1)
-	// fmt.Println(cache1)
-
-	// cache1 := make(map[int][][]int)
-	// cache1[1] = append(cache1[1], []int{1, 2, 3})
-	// cache1[1] = append(cache1[1], []int{3, 4, 5})
-	// fmt.Println(cache1)
-
-	// cache2 := map[int][][]int{}
-	// cache2[1] = append(cache2[1], []int{1, 2, 3})
-	// cache2[1] = append(cache2[1], []int{3, 4, 5})
-	// fmt.Println(cache2)
-
-	// ans2 := make([][]int, 5)
-	// ans2[1] = append(ans2[1], 5)
-	// fmt.Println(ans2)
-	fmt.Println(math.Pow(2, 3))
-
-	s := "->aaa"
-	fmt.Println(s[0:2])
-	fmt.Println(s[2:])
-
-	basesort.ShowQuickSort()
-
-	arr1 := make([]int, 5)
-	fmt.Println(arr1)
-	fmt.Println(arr1[0])
-
-	arr2 := make([]int, 0, 5)
-	arr2 = append(arr2, 1)
-	arr2 = []int{}
-	arr2 = append(arr2, 2)
-	fmt.Println(arr2)
+	// 2. map初始化
 }

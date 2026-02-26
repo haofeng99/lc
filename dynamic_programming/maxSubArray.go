@@ -4,6 +4,7 @@ import "fmt"
 
 // https://leetcode.cn/problems/maximum-subarray/
 // 53. 最大子数组和
+// 百度, 抖音, 腾讯, 虾皮
 
 // 变种1: 输出对应子数组
 // 变种2: https://www.nowcoder.com/discuss/820121. 剑指 Offer II 008
@@ -16,12 +17,10 @@ func maxSubArray(nums []int) int {
 	maxSalesArr := make([]int, len(nums), len(nums))
 	maxSalesArr[0] = nums[0]
 
+	ans := maxSalesArr[0]
+
 	for i := 1; i < len(nums); i++ {
 		maxSalesArr[i] = max(nums[i], maxSalesArr[i-1]+nums[i])
-	}
-
-	ans := maxSalesArr[0]
-	for i := 1; i < len(maxSalesArr); i++ {
 		if maxSalesArr[i] > ans {
 			ans = maxSalesArr[i]
 		}
@@ -51,7 +50,7 @@ func maxSubArray_II(nums []int) int {
 	return ans
 }
 
-// todo
+// 变总: 打印对应子数组
 func maxSubArray_III(nums []int) int {
 
 	dp, ans := nums[0], nums[0]
@@ -76,3 +75,5 @@ func maxSubArray_III(nums []int) int {
 
 	return ans
 }
+
+// 变总: 剑指 Offer II 008.和大于等于K的最短子数组
