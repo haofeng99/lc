@@ -21,7 +21,7 @@ func longestPalindrome(s string) string {
 	start := 0
 	// 为什么是先遍历j, 再遍历i, 因为dp[i][j]依赖于dp[i+1][j-1], 只有当j先遍历时, dp[i+1][j-1]才会被计算出来
 	for j := 1; j < len(s); j++ {
-		for i := 0; i < j; i++ {
+		for i := 0; i <= j; i++ {
 			// j-i<=2的判断条件为了防止dp[i+1][j-1]得到的结果为i'>j'的情况出现,
 			// 此时dp[i'][j']的数据没有初始化,一定是false,所以计算结果就会被识别为false
 			// 例如aa就会被认为不是回文串(dp[1][0]没有初始化,默认为false), 但是实际上aa是回文串
@@ -38,7 +38,9 @@ func longestPalindrome(s string) string {
 }
 
 // 动态规划_内存优化
-// 思路: // todo 理清优化思路
+// 思路:
+// 在内层循环中, 此时dp[i][j]的j值已经是固定的了, 因此没必要再去维护, 因此只需要计算当前j列的值就行, 并且把当前j列计算出的结果作为下一个j列的计算基础;
+// 但是需要注意的是, 如果当前j列某个位置不满足条件, 需要手动把对应位置设置为false, 否则可能因为历史数据记录影响后续的计算
 func longestPalindrome_ii(s string) string {
 	// 矩阵初始化
 	dp := make([]bool, len(s))
@@ -47,7 +49,7 @@ func longestPalindrome_ii(s string) string {
 	maxLen := 1
 	start := 0
 	for j := 1; j < len(s); j++ {
-		for i := 0; i < j; i++ {
+		for i := 0; i <= j; i++ {
 			if s[i] == s[j] && (j-i <= 2 || dp[i+1]) {
 				dp[i] = true
 				if j-i+1 > maxLen {
@@ -91,4 +93,25 @@ func expandAroundCenter(s string, left, right int) int {
 		right++
 	}
 	return right - left - 1
+}
+
+// 中心扩张法2: 以2*len(s)-1个中心进行扩张
+func longestPalindrome_center_spread_ii(s string) string {
+	if len(s) == 0 {
+		return ""
+	}
+	max_len := 0
+	left := 0
+	for i := 0; i < 2*len(s)-1; i++ {
+		l, r := i/2, i/2+i%2
+		for l >= 0 && r < len(s) && s[l] == s[r] {
+			if r-l+1 > max_len {
+				max_len = r - l + 1
+				left = l
+			}
+			l--
+			r++
+		}
+	}
+	return s[left : left+max_len]
 }
