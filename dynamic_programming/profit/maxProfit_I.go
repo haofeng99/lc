@@ -1,7 +1,7 @@
 package dynamicprogramming
 
 // https://leetcode.cn/problems/best-time-to-buy-and-sell-stock/
-// 121. 买卖股票的最佳时机
+// 121. 买卖股票的最佳时机 (最多只买卖一次)
 
 // dp[i]表示第i天卖出获得的最大利润
 // dp[i] = max(price[i]-i_pre_min, dp[i-1])
@@ -18,6 +18,8 @@ func maxProfit(prices []int) int {
 	}
 	return dp[len(dp)-1]
 }
+
+// 思路: 找最小值和最大值
 func maxProfit_(prices []int) int {
 	minPrice := prices[0]
 	curMaxProfit := 0
