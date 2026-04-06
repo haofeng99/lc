@@ -45,5 +45,9 @@ func main() {
 	matrix[0][0] = 1
 	fmt.Println(matrix) // [[1 0 0] [0 0 0] [0 0 0]]
 
+	// 1.6 二维矩阵初始化1
+	matrix_2 := make([][2]int, 3)
+	fmt.Println(matrix_2) // [[0 0] [0 0] [0 0]]
+
 	// 2. map初始化
 }

@@ -48,19 +48,21 @@ func maxProfit_III_simple(prices []int) int {
 
 // 内存优化
 func maxProfit_III_od(prices []int) int {
-	no_op, buy_1, sell_1, buy2, sell_2 := 0, -prices[0], 0, -prices[0], 0
-	for i := 0; i < len(prices); i++ {
-		temp_no_op := no_op
-		temp_buy_1 := max(buy_1, no_op-prices[i])
-		temp_sell_1 := max(sell_1, buy_1+prices[i])
-		temp_buy_2 := max(buy2, sell_1-prices[i])
-		temp_sell_2 := max(sell_2, buy2+prices[i])
+	no_op := 0
+	buy1 := -prices[0]
+	sell1 := 0
+	buy2 := -prices[0]
+	sell2 := 0
 
-		no_op = temp_no_op
-		buy_1 = temp_buy_1
-		sell_1 = temp_sell_1
-		buy2 = temp_buy_2
-		sell_2 = temp_sell_2
+	for i := 1; i < len(prices); i++ {
+		pre_no_op, pre_buy1, pre_sell1, pre_buy2, pre_sell2 := no_op, buy1, sell1, buy2, sell2
+
+		no_op = pre_no_op
+		buy1 = max(pre_buy1, pre_no_op-prices[i])
+		sell1 = max(pre_sell1, pre_buy1+prices[i])
+		buy2 = max(pre_buy2, pre_sell1-prices[i])
+		sell2 = max(pre_sell2, pre_buy2+prices[i])
 	}
-	return sell_2
+
+	return sell2
 }

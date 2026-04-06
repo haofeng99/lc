@@ -2,8 +2,11 @@ package dynamicprogramming
 
 // https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/description/
 // 714. 买卖股票的最佳时机含手续费
+
 // 不限次数买卖扣费场景
-// 关键点: 将扣费过程统一, 要不买入扣费, 要不卖出扣费
+// 关键点:
+// 1.根据不限次数场景的改造
+// 2.将扣费过程统一, 要不买入扣费, 要不卖出扣费
 func maxProfit_VI(prices []int, fee int) int {
 	hold, sell := -prices[0]-fee, 0
 	for i := 1; i < len(prices); i++ {
