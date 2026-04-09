@@ -3,16 +3,6 @@ package dynamicprogramming
 // https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-iii/
 // 123 买卖股票的最佳时机 III (买入卖出限制2笔)
 
-// 思路: 由于限制了买入卖出次数, 因此需要在状态里加入交易次数的维度
-// dp[i][j][k] 表示第i天, 交易了j次, 手里是否持有股票(k=0表示不持有, k=1表示持有)的最大利润
-// dp[i][j][0] = max(dp[i-1][j][0], dp[i-1][j][1] + prices[i])
-// dp[i][j][1] = max(dp[i-1][j][1], dp[i-1][j-1][0] - prices[i]) // 昨天没有持股而今天买入一只，故昨天买入的次数是j-1
-func maxProfit_III(prices []int) int {
-	// 矩阵初始化
-	// 三维矩阵的解法不考虑
-	return 0
-}
-
 // 思路: dp[i][j] 表示在第i天状态为j时的最大收益
 // 其中j有以下5个状态
 // 0: 未交易
