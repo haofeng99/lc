@@ -5,6 +5,8 @@ import (
 	"sort"
 )
 
+// 56 合并区间
+// https://leetcode.cn/problems/merge-intervals/
 func mergr(intervals [][]int) [][]int {
 	sort.Slice(intervals, func(i, j int) bool {
 		return intervals[i][0] < intervals[j][0]

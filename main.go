@@ -50,4 +50,29 @@ func main() {
 	fmt.Println(matrix_2) // [[0 0] [0 0] [0 0]]
 
 	// 2. map初始化
+	// 2.1 make创建map 一个空map
+	map1 := make(map[int]int)
+	fmt.Println(map1)
+	fmt.Println(map1[1])
+
+	map2 := make(map[int][]int)
+	fmt.Println(map2)
+	fmt.Println(append(map2[1], 1))
+	fmt.Println(map2)
+
+	// 2.2
+
+	// 2.3 字面量初始化
+	map4 := map[int]int{
+		1: 1,
+		2: 2,
+	}
+	fmt.Println(map4)
+
+	map5 := map[int][]int{0: {-1}}
+	p := map5[2]
+	fmt.Printf("%p\n", p) // 0x0
+	p = append(p, 2)
+	fmt.Printf("%p\n", p) // 0x14000098170
+	fmt.Println(map5)
 }
