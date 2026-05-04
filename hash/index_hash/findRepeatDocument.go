@@ -3,18 +3,35 @@ package hash
 // https://leetcode.cn/problems/shu-zu-zhong-zhong-fu-de-shu-zi-lcof/
 // LCR 120. 寻找文件副本
 
+// 方法1: 为了避免0数据的出现, 直接将原有数据加n, 重新映射到n -> 2n之间
 func findRepeatDocument(documents []int) int {
-	for i := 0; i < len(documents); i++ {
-		documents[i]++
+	n := len(documents)
+	for _, v := range documents {
+		num := v % n // 重新映射回0～n-1
+		if documents[num] >= n {
+			return num
+		}
+		documents[num] += n
 	}
-	for i, d := range documents {
-		if d < 0 {
-			d = -d
+	return -1
+}
+
+// 方法2: 交换法
+// 把每个数交换到它"应该在"的索引位置，如果目标位置已经有正确的数，则找到重复
+// 不会出现死循环
+func findRepeatDocument_ii(documents []int) int {
+	i := 0
+	for i < len(documents) {
+		if documents[i] == i {
+			i++
+			continue
 		}
-		if documents[d-1] < 0 {
-			return i
+		// 目标位置已经有相同的值 → 找到重复
+		if documents[documents[i]] == documents[i] {
+			return documents[i]
 		}
-		documents[d-1] = -documents[d-1]
+		// 否则交换到正确位置
+		documents[i], documents[documents[i]] = documents[documents[i]], documents[i]
 	}
 	return -1
 }
