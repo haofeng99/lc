@@ -200,9 +200,9 @@ func TestMaxProfitVIII_consistency(t *testing.T) {
 	}
 
 	for i, tc := range testCases {
-		enum := maxProfit_VIII(tc.prices, tc.k)     // 枚举刚好k~k+5
-		direct := maxProfit_VIII_(tc.prices, tc.k)  // 直接DP
-		od := maxProfit_VIII_od(tc.prices, tc.k)    // 状态压缩
+		enum := maxProfit_VIII(tc.prices, tc.k)    // 枚举刚好k~k+5
+		direct := maxProfit_VIII_(tc.prices, tc.k) // 直接DP
+		od := maxProfit_VIII_od(tc.prices, tc.k)   // 状态压缩
 
 		if enum != direct {
 			t.Errorf("case %d: enum=%d, direct=%d, prices=%v, k=%d", i, enum, direct, tc.prices, tc.k)

@@ -2,6 +2,7 @@ package dynamicprogramming
 
 // https://leetcode.cn/problems/best-time-to-buy-and-sell-stock-iv/
 // 188. 买卖股票的最佳时机 IV (买入卖出限制最多k笔)
+// 输出哪天买, 哪天卖
 
 func maxProfit_IV_(k int, prices []int) int {
 	// 状态定义
