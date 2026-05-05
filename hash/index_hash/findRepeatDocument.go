@@ -3,7 +3,9 @@ package hash
 // https://leetcode.cn/problems/shu-zu-zhong-zhong-fu-de-shu-zi-lcof/
 // LCR 120. 寻找文件副本
 
-// 方法1: 为了避免0数据的出现, 直接将原有数据加n, 重新映射到n -> 2n之间
+// 方法1: 0的出现会导致无法取负数,
+// 因此不取负数, 而是往上取大数,
+// 在每次遍历时, 取大数的模, 还原来的数, 并判断对应下标位置的数据是否为大数
 func findRepeatDocument(documents []int) int {
 	n := len(documents)
 	for _, v := range documents {
@@ -25,6 +27,8 @@ func findRepeatDocument_ii(documents []int) int {
 		for documents[documents[i]] != documents[i] {
 			documents[i], documents[documents[i]] = documents[documents[i]], documents[i]
 		}
+		// 推出内层for循环后, 状态为documents[documents[i]] != documents[i]
+		// 那么此时, 如果documents[i] != i, 就代表两个不同的位置出现了相同的数据
 		if documents[i] != i {
 			return documents[i]
 		}
